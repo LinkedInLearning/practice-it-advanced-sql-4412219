@@ -1,0 +1,34 @@
+-- Challenge #1
+
+WITH EventGaps AS (
+    SELECT
+        E1.EventName AS Event1,
+        E2.EventName AS Event2,
+        DATEDIFF(E2.EventDate, E1.EventDate) AS GapDays
+    FROM
+        Events E1
+    JOIN
+        Events E2
+    ON
+        E1.EventDate < E2.EventDate
+)
+
+SELECT
+    Event1,
+    Event2,
+    MAX(GapDays) AS LongestGap
+FROM
+    EventGaps;
+
+-- Challenge 2
+
+SELECT
+    DATE_FORMAT(EventDate, '%Y-%m') AS MonthYear,
+    SUM(TicketPrice) AS TotalRevenue
+FROM
+    Events
+GROUP BY
+    MonthYear
+ORDER BY
+    MonthYear;
+

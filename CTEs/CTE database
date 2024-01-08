@@ -1,0 +1,77 @@
+-- Create the InventoryManagement database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS InventoryManagement;
+
+-- Use the InventoryManagement database
+USE InventoryManagement;
+
+-- Create the Categories table
+CREATE TABLE Categories (
+    CategoryID INT AUTO_INCREMENT PRIMARY KEY,
+    CategoryName VARCHAR(50) NOT NULL
+);
+
+-- Create the Suppliers table
+CREATE TABLE Suppliers (
+    SupplierID INT AUTO_INCREMENT PRIMARY KEY,
+    SupplierName VARCHAR(100) NOT NULL,
+    ContactName VARCHAR(50),
+    ContactEmail VARCHAR(100)
+);
+
+-- Create the Products table
+CREATE TABLE Products (
+    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+    ProductName VARCHAR(100) NOT NULL,
+    CategoryID INT,
+    SupplierID INT,
+    UnitPrice DECIMAL(10, 2),
+    StockQuantity INT
+);
+
+-- Create the Orders table
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerName VARCHAR(100) NOT NULL,
+    OrderDate DATE,
+    TotalAmount DECIMAL(10, 2)
+);
+
+-- Insert sample data into Categories table
+INSERT INTO Categories (CategoryName)
+VALUES
+    ('Electronics'),
+    ('Clothing'),
+    ('Furniture'),
+    ('Books');
+
+-- Insert sample data into Suppliers table
+INSERT INTO Suppliers (SupplierName, ContactName, ContactEmail)
+VALUES
+    ('Tech World', 'John Smith', 'john@techworld.com'),
+    ('Fashion Empire', 'Sarah Johnson', 'sarah@fashionempire.com'),
+    ('Furniture Plus', 'David Brown', 'david@furnitureplus.com'),
+    ('Book Haven', 'Emily Davis', 'emily@bookhaven.com');
+
+-- Insert sample data into Products table
+INSERT INTO Products (ProductName, CategoryID, SupplierID, UnitPrice, StockQuantity)
+VALUES
+    ('Smartphone', 1, 1, 599.99, 50),
+    ('Laptop', 1, 1, 999.99, 30),
+    ('T-Shirt', 2, 2, 19.99, 100),
+    ('Sofa', 3, 3, 499.99, 20),
+    ('Book: "The Great Gatsby"', 4, 4, 12.99, 150);
+
+-- Insert sample data into Orders table
+INSERT INTO Orders (CustomerName, OrderDate, TotalAmount)
+VALUES
+    ('Alice Johnson', '2023-01-15', 799.98),
+    ('Bob Miller', '2023-02-20', 59.97),
+    ('Charlie Davis', '2023-03-10', 499.99),
+    ('David Wilson', '2023-04-05', 999.99),
+    ('Emma Smith', '2023-05-12', 259.75);
+
+-- Check the table structures
+DESCRIBE Categories;
+DESCRIBE Suppliers;
+DESCRIBE Products;
+DESCRIBE Orders;

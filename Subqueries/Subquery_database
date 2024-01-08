@@ -1,0 +1,42 @@
+-- Create the HR database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS HR;
+
+-- Use the HR database
+USE HR;
+
+-- Create the Departments table
+CREATE TABLE Departments (
+    DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
+    DepartmentName VARCHAR(50) NOT NULL
+);
+
+-- Create the Employees table
+CREATE TABLE Employees (
+    EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    DepartmentID INT,
+    Salary DECIMAL(10, 2),
+    HireDate DATE
+);
+
+-- Insert sample data into the Departments table
+INSERT INTO Departments (DepartmentName)
+VALUES
+    ('HR'),
+    ('Finance'),
+    ('IT'),
+    ('Marketing');
+
+-- Insert sample data into the Employees table
+INSERT INTO Employees (FirstName, LastName, DepartmentID, Salary, HireDate)
+VALUES
+    ('John', 'Doe', 1, 60000.00, '2023-01-15'),
+    ('Jane', 'Smith', 2, 75000.00, '2023-02-20'),
+    ('Michael', 'Johnson', 3, 80000.00, '2023-03-10'),
+    ('Emily', 'Williams', 1, 55000.00, '2023-04-05'),
+    ('David', 'Brown', 4, 70000.00, '2023-05-12');
+
+-- Check the table structures
+DESCRIBE Departments;
+DESCRIBE Employees;

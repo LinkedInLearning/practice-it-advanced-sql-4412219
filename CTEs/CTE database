@@ -70,8 +70,3 @@ VALUES
     ('David Wilson', '2023-04-05', 999.99),
     ('Emma Smith', '2023-05-12', 259.75);
 
--- Check the table structures
-DESCRIBE Categories;
-DESCRIBE Suppliers;
-DESCRIBE Products;
-DESCRIBE Orders;

@@ -1,0 +1,53 @@
+-- Challenge #1
+
+WITH HighValueSuppliers AS (
+    SELECT
+        S.SupplierName,
+        COUNT(P.ProductID) AS HighValueProductCount
+    FROM
+        Suppliers S
+    LEFT JOIN
+        Products P ON S.SupplierID = P.SupplierID
+    WHERE
+        P.UnitPrice > (
+            SELECT
+                AVG(UnitPrice)
+            FROM
+                Products
+        )
+    GROUP BY
+        S.SupplierName
+)
+
+SELECT
+    HVS.SupplierName,
+    HVS.HighValueProductCount
+FROM
+    HighValueSuppliers HVS
+ORDER BY
+    HVS.HighValueProductCount DESC;
+
+-- Challenge #2
+
+WITH LowStockProducts AS (
+    SELECT
+        P.ProductName,
+        C.CategoryName,
+        P.StockQuantity
+    FROM
+        Products P
+    INNER JOIN
+        Categories C ON P.CategoryID = C.CategoryID
+    WHERE
+        P.StockQuantity < 50
+)
+
+SELECT
+    LSP.ProductName,
+    LSP.CategoryName,
+    LSP.StockQuantity
+FROM
+    LowStockProducts LSP;
+
+
+

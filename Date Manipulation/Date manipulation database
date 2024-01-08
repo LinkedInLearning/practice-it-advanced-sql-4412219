@@ -1,0 +1,26 @@
+-- Create the EventManagement database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS EventManagement;
+
+-- Use the EventManagement database
+USE EventManagement;
+
+-- Create the Events table
+CREATE TABLE Events (
+    EventID INT AUTO_INCREMENT PRIMARY KEY,
+    EventName VARCHAR(100) NOT NULL,
+    EventDate DATE,
+    EventLocation VARCHAR(100),
+    TicketPrice DECIMAL(10, 2)
+);
+
+-- Insert sample data into the Events table
+INSERT INTO Events (EventName, EventDate, EventLocation, TicketPrice)
+VALUES
+    ('Concert in the Park', '2023-07-15', 'Central Park', 25.00),
+    ('Tech Conference', '2023-08-20', 'Convention Center', 150.00),
+    ('Art Exhibition', '2023-09-10', 'Art Gallery', 10.00),
+    ('Sports Tournament', '2023-10-05', 'Stadium', 35.00),
+    ('Holiday Gala', '2023-12-20', 'Grand Hotel', 75.00);
+
+-- Check the table structure
+DESCRIBE Events;

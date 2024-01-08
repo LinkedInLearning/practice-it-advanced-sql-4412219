@@ -1,36 +1,30 @@
--- Create the InventoryManagement database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS InventoryManagement;
-
--- Use the InventoryManagement database
-USE InventoryManagement;
-
 -- Create the Categories table
-CREATE TABLE Categories (
-    CategoryID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Categories (
+    CategoryID INTEGER PRIMARY KEY AUTOINCREMENT,
     CategoryName VARCHAR(50) NOT NULL
 );
 
 -- Create the Suppliers table
-CREATE TABLE Suppliers (
-    SupplierID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Suppliers (
+    SupplierID INTEGER PRIMARY KEY AUTOINCREMENT,
     SupplierName VARCHAR(100) NOT NULL,
     ContactName VARCHAR(50),
     ContactEmail VARCHAR(100)
 );
 
 -- Create the Products table
-CREATE TABLE Products (
-    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Products (
+    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
     ProductName VARCHAR(100) NOT NULL,
-    CategoryID INT,
-    SupplierID INT,
+    CategoryID INTEGER,
+    SupplierID INTEGER,
     UnitPrice DECIMAL(10, 2),
-    StockQuantity INT
+    StockQuantity INTEGER
 );
 
 -- Create the Orders table
-CREATE TABLE Orders (
-    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Orders (
+    OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
     CustomerName VARCHAR(100) NOT NULL,
     OrderDate DATE,
     TotalAmount DECIMAL(10, 2)

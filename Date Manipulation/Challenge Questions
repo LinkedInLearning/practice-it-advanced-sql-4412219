@@ -1,0 +1,3 @@
+Challenge 1: In this challenge, you need to find the longest gap (in days) between two consecutive events. Retrieve the event names and the duration of the longest gap.
+
+Challenge 2: In this challenge, you need to calculate the total revenue earned for each month in the database. Retrieve the month and year along with the total revenue.

@@ -23,7 +23,7 @@ FROM
 -- Challenge 2
 
 SELECT
-    DATE_FORMAT(EventDate, '%Y-%m') AS MonthYear,
+    STRFTIME('%Y-%m', EventDate) AS MonthYear,
     SUM(TicketPrice) AS TotalRevenue
 FROM
     Events

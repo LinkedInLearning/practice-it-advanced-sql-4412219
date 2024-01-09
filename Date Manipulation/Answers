@@ -4,7 +4,7 @@ WITH EventGaps AS (
     SELECT
         E1.EventName AS Event1,
         E2.EventName AS Event2,
-        DATEDIFF(E2.EventDate, E1.EventDate) AS GapDays
+        JULIANDAY(E2.EventDate) - JULIANDAY(E1.EventDate) AS GapDays
     FROM
         Events E1
     JOIN

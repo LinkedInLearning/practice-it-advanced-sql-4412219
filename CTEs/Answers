@@ -1,5 +1,5 @@
 -- Challenge #1
-
+--ans
 WITH HighValueSuppliers AS (
     SELECT
         S.SupplierName,
